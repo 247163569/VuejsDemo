@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!---->
+		<script type="text/javascript">
+			//通过for循环创建8个小圆
+			//小圆的位置是在同一个大圆中
+			//角度相差45
+			var w = 50; //每个小圆的宽
+			var h = 100; //每个小圆的高
+			var r = 200; //每个小圆所在的大圆的半径
+			var delta = 45; //相邻两个小圆的角度差
+			var centerX = document.documentElement.clientWidth;
+			var centerY = document.documentElement.clientHeight;
+			var num = 360 / delta;
+			for(var i = 0; i < num; i++) {
+				var div = document.createElement("div");
+				div.style.width = w + "px";
+				div.style.height = h + "px";
+				div.style.border = "solid 1px black";
+				div.style.borderRadius = "50%";
+				//hsl
+				//hue 色相0~360
+				//saturation饱和度0%~100%
+				//lightness亮度0%~100%
+				div.style.backgroundColor = "hsl(" + Math.random() * 360 + ",50%,50%)";
+				div.style.position = "absolute";
+				//大圆半径r  = 200
+				div.style.left = centerX / 2 - w / 2 + r * Math.cos(Math.PI / 180 * i * delta) + "px";
+				div.style.top = centerY / 2 - h / 2 + r * Math.sin(Math.PI / 180 * i * delta) + "px";
+				document.body.appendChild(div);
+			}
+			var add = 1;
+			var speed = 1;
+			function rotate() {
+				var allDiv = document.querySelectorAll("div");
+				for(var i = 0; i < allDiv.length; i++) {
+					var div = allDiv[i];
+					div.style.left = centerX / 2 - w / 2 + r * Math.cos(Math.PI / 180 * (i * delta + add)) + "px";
+					div.style.top = centerY / 2 - h / 2 + r * Math.sin(Math.PI / 180 * (i * delta + add)) + "px";
+					div.style.transform = "rotate(" + (i * delta + add) + "deg)";
+				}
+				add += 1;
+				r += speed;
+				if (r >= 300 || r < 120) {
+					speed = -speed;
+				}
+			};
+			setInterval(rotate,10);
+		</script>
+	</body>
+
+</html>
