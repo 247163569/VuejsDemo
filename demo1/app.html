@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>双向数据绑定</title>
+<script src="vue.min.js"></script>
+</head>
+
+
+<body>
+<div id="app">
+	<p>{{ message }}</p>
+	<!--不变化-->
+	<p>{{* message}}</p>
+	<!-- 字符串连接 -->
+	<p>{{ message + '官网地址：www.qq.com' }}</p>
+	<!-- 字符串反转 -->
+	<p>{{ message.split('').reverse().join('') }}</p>
+	<input v-model="message">
+</div>
+<script src="app.js"></script>
+</body>
+</html>

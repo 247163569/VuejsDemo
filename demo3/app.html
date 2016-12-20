@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>多维数组实例</title>
+<script src="vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <ul id="example-2">
+  <li v-for="item in items">
+    {{ parentMessage }} - {{ $index }} - {{ item.message }}
+  </li>
+</ul>
+<script>
+var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    parentMessage: 'hello',
+    items: [
+      { message: '周杰伦' },
+      { message: '彭于晏' }
+    ]
+  }
+})
+</script>
+</body>
+</html>
